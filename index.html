@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프레스온 | 온라인 쇼핑몰</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="프레스온 홈">
+        <span class="brand-mark">P</span>
+        <span>프레스온</span>
+      </a>
+      <form class="search" id="searchForm">
+        <label class="sr-only" for="searchInput">상품 검색</label>
+        <input id="searchInput" type="search" placeholder="상품, 스토어, 브랜드 검색" autocomplete="off" />
+        <button type="submit">검색</button>
+      </form>
+      <nav class="quick-nav" aria-label="빠른 메뉴">
+        <button class="icon-button" type="button" id="wishlistButton" aria-label="찜 목록">
+          <span>♡</span>
+        </button>
+        <button class="cart-toggle" type="button" id="cartToggle" aria-label="장바구니 열기">
+          장바구니
+          <strong id="cartCount">0</strong>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="store-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">오늘의 추천 스토어</p>
+          <h1>작은 브랜드를 빠르게 발견하는 프레스온</h1>
+          <p>신선식품, 리빙, 패션, 디지털 상품을 한 화면에서 비교하고 바로 장바구니에 담아보세요.</p>
+          <div class="hero-actions">
+            <a href="#products" class="primary-link">상품 둘러보기</a>
+            <a href="#seller" class="secondary-link">입점 안내</a>
+          </div>
+        </div>
+        <div class="hero-media" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=900&q=80"
+            alt=""
+          />
+        </div>
+      </section>
+
+      <section class="category-strip" aria-label="카테고리">
+        <button class="category active" type="button" data-category="all">전체</button>
+        <button class="category" type="button" data-category="fresh">신선식품</button>
+        <button class="category" type="button" data-category="living">리빙</button>
+        <button class="category" type="button" data-category="fashion">패션</button>
+        <button class="category" type="button" data-category="digital">디지털</button>
+        <button class="category" type="button" data-category="beauty">뷰티</button>
+      </section>
+
+      <section class="deal-band" aria-label="프로모션">
+        <article>
+          <span>무료배송</span>
+          <strong>3만원 이상 구매 시</strong>
+        </article>
+        <article>
+          <span>오늘특가</span>
+          <strong>인기 상품 최대 42%</strong>
+        </article>
+        <article>
+          <span>스토어 혜택</span>
+          <strong>첫 구매 쿠폰 5천원</strong>
+        </article>
+      </section>
+
+      <section class="content-layout" id="products">
+        <aside class="filters" aria-label="상품 필터">
+          <div class="filter-group">
+            <h2>정렬</h2>
+            <select id="sortSelect">
+              <option value="popular">인기순</option>
+              <option value="low">낮은 가격순</option>
+              <option value="high">높은 가격순</option>
+              <option value="rating">평점순</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <h2>가격대</h2>
+            <label><input type="radio" name="price" value="all" checked /> 전체</label>
+            <label><input type="radio" name="price" value="under30000" /> 3만원 이하</label>
+            <label><input type="radio" name="price" value="under70000" /> 7만원 이하</label>
+            <label><input type="radio" name="price" value="over70000" /> 7만원 이상</label>
+          </div>
+          <div class="filter-group" id="seller">
+            <h2>셀러 도구</h2>
+            <p>상품 등록, 주문 관리, 리뷰 응대까지 확장할 수 있는 쇼핑몰 기초 화면입니다.</p>
+          </div>
+        </aside>
+
+        <section class="product-section" aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">실시간 랭킹</p>
+              <h2>추천 상품</h2>
+            </div>
+            <span id="resultCount">0개</span>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+          <p class="empty-state" id="emptyState" hidden>조건에 맞는 상품이 없습니다.</p>
+        </section>
+      </section>
+
+      <section class="comments-section" aria-labelledby="commentsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">커뮤니티</p>
+            <h2 id="commentsTitle">상품 문의와 댓글</h2>
+          </div>
+        </div>
+        <div class="comments-box">
+          <div id="disqus_thread"></div>
+          <noscript>댓글 기능을 보려면 JavaScript를 활성화해주세요.</noscript>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cart-panel" id="cartPanel" aria-label="장바구니" aria-hidden="true">
+      <div class="cart-header">
+        <h2>장바구니</h2>
+        <button class="icon-button" type="button" id="closeCart" aria-label="장바구니 닫기">×</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <div>
+          <span>상품 금액</span>
+          <strong id="cartSubtotal">0원</strong>
+        </div>
+        <div>
+          <span>배송비</span>
+          <strong id="shippingFee">0원</strong>
+        </div>
+        <div class="total">
+          <span>결제 예정 금액</span>
+          <strong id="cartTotal">0원</strong>
+        </div>
+        <button type="button" class="checkout-button">주문하기</button>
+      </div>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
