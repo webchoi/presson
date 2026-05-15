@@ -27,8 +27,8 @@
           <h1>엑셀 상품 목록을 타오바오 검색 작업표로 변환</h1>
           <p>
             이미지, 상품명, 가격이 들어 있는 엑셀 파일을 올리면 행별로 검색 링크와 결과 입력 칸을
-            만들어 줍니다. 검색 후 타오바오 상품명, URL, 가격을 한 화면에서 정리하고 CSV로 저장할 수
-            있습니다.
+            만들어 줍니다. category_code 값은 카테고리 컬럼으로 가져오고, 검색 후 타오바오 URL을
+            한 화면에서 정리해 CSV로 저장할 수 있습니다.
           </p>
         </div>
         <div class="upload-panel">
@@ -40,7 +40,7 @@
           </label>
           <div class="upload-note">
             <strong>권장 컬럼명</strong>
-            <span>상품명, 가격, 이미지 또는 image_url</span>
+            <span>상품명, 가격, 이미지 또는 image_url, category_code</span>
           </div>
         </div>
       </section>
@@ -58,20 +58,12 @@
           <span>결과 입력</span>
           <strong id="matchedCount">0</strong>
         </article>
-        <article>
-          <span>평균 타오바오가</span>
-          <strong id="averagePrice">-</strong>
-        </article>
       </section>
 
       <section class="controls" aria-label="검색 설정">
         <div class="control-group">
           <label for="queryPrefix">검색어 보강</label>
           <input id="queryPrefix" type="text" placeholder="예: 여성, 주방, 휴대용" />
-        </div>
-        <div class="control-group">
-          <label for="currencyRate">위안 환율</label>
-          <input id="currencyRate" type="number" min="0" step="0.01" value="190" />
         </div>
         <div class="control-group">
           <label for="filterSelect">보기</label>
@@ -106,12 +98,11 @@
               <tr>
                 <th><input id="selectAll" type="checkbox" aria-label="전체 선택" /></th>
                 <th>이미지</th>
+                <th>카테고리</th>
                 <th>원본 상품명</th>
                 <th>원본 가격</th>
                 <th>검색 액션</th>
-                <th>타오바오 상품명</th>
                 <th>타오바오 URL</th>
-                <th>타오바오 가격</th>
                 <th>상태</th>
               </tr>
             </thead>

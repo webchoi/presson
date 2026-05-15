@@ -198,7 +198,7 @@ main {
 
 .status-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin: 8px 0 18px;
 }
@@ -225,7 +225,7 @@ main {
 
 .controls {
   display: grid;
-  grid-template-columns: 1.2fr 180px 180px auto;
+  grid-template-columns: minmax(260px, 1fr) 180px auto;
   gap: 12px;
   align-items: end;
   padding: 16px;
@@ -295,7 +295,7 @@ td input {
 
 table {
   width: 100%;
-  min-width: 1120px;
+  min-width: 980px;
   border-collapse: collapse;
   background: var(--white);
 }
@@ -310,7 +310,7 @@ td {
 
 th {
   position: sticky;
-  top: 63px;
+  top: 0;
   z-index: 1;
   color: var(--muted);
   background: #f9fafb;
@@ -348,12 +348,18 @@ tr:last-child td {
   font-weight: 800;
 }
 
+.category {
+  min-width: 120px;
+  color: var(--muted);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 .price {
   white-space: nowrap;
 }
 
-.search-link,
-.copy-link {
+.search-link {
   display: inline-flex;
   align-items: center;
   color: var(--white);
@@ -366,14 +372,10 @@ tr:last-child td {
   min-width: 118px;
 }
 
-.keyword-search {
-  color: var(--ink);
-  border: 1px solid var(--line);
-  background: var(--white);
-}
-
-.copy-link {
+.missing-action {
+  display: inline-flex;
   min-height: 34px;
+  align-items: center;
   padding: 0 10px;
   color: var(--muted);
   border: 1px solid var(--line);
@@ -415,9 +417,6 @@ tr:last-child td {
     align-items: stretch;
   }
 
-  th {
-    top: 63px;
-  }
 }
 
 @media (max-width: 640px) {
